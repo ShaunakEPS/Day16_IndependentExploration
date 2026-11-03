@@ -3,9 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Easy Quiz</title>
 </head>
+<style>
+    .grid-container {
+        display: grid;
+        grid-gap: 1px;
+        grid-template-columns: auto auto auto auto auto;
+    }
+    .zero {
+        color: black;
+    }
+    .one {
+        color: black;
+    }
+    .two {
+        color: red;
+    }
+    .three {
+        color: orange;
+    }
+    .four {
+        color: purple;
+    }
+    .five {
+        color: yellow;
+    }
+    .six {
+        color: green;
+    }
+    .seven {
+        color: lightblue;
+    }
+    .eight {
+        color: white;
+    }
+    .nine {
+        color: darkblue;
+    }
+    .ten {
+        color: gainsboro;
+    }
+    .oneten {
+        color: aqua;
+    }
+    .twoten {
+        color: aquamarine;
+    }
+    .threeten {
+        color: navajowhite;
+    }
+    .fourten {
+        color: darkred;
+    }
+    .fiveten {
+        color: blue;
+    }
+    .sixten {
+        color: burlywood;
+    }
+    .seventen {
+        color: saddlebrown;
+    }
+    .eightten {
+        color: gold;
+    }
+    .nineten {
+        color: firebrick;
+    }
+    .twenty {
+        color: hotpink;
+    }
+    .six.seven {
+        color: lightgray;
+    }
+    #question1 {
+        color: hotpink;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color: red;
+    }
+</style>
 <body>
-    
+    <p>Welcome to an easy quiz.</p>
+    <p>This quiz is definitely made by a reputable intellectual source. It is very intelligent.</p>
+    <p>You think it's easy, but is is not...</p>
+    <p>First, please select the right button to do the quiz. If you pick wrong, then all buttons get disabled, requiring you to reset the page! (mr Sieg, I would suggest clicking button 0 for another reason).</p> 
+    <div class="grid-container">
+        <button id="0" onclick="location.href='next.html'";>0</button>
+        <button id="1" onclick="ragebaitPre()" class="one">1</button>
+        <button id="2" onclick="ragebaitPre()" class="two">2</button>
+        <button id="3" onclick="ragebaitPre()" class="three">3</button>
+        <button id="4" onclick="ragebaitPre()" class="four">4</button>
+        <button id="5" onclick="ragebaitPre()" class="five">5</button>
+        <button id="6" onclick="ragebaitPre()" class="six">6</button>
+        <button id="6-7" onclick="winPre()" class="six.seven">6-7</button>
+        <button id="7" onclick="ragebaitPre()" class="seven">7</button>
+        <button id="8" onclick="ragebaitPre()" class="eight">8</button>
+        <button id="9" onclick="ragebaitPre()" class="nine">9</button>
+        <button id="10" onclick="ragebaitPre()" class="ten">10</button>
+        <button id="11" onclick="ragebaitPre()" class="oneten">11</button>
+        <button id="12" onclick="ragebaitPre()" class="twoten">12</button>
+        <button id="13" onclick="ragebaitPre()" class="threeten">13</button>
+        <button id="14" onclick="ragebaitPre()" class="fourten">14</button>
+        <button id="15" onclick="ragebaitPre()" class="fiveten">15</button>
+        <button id="16" onclick="ragebaitPre()" class="sixten">16</button>
+        <button id="17" onclick="ragebaitPre()" class="seventen">17</button>
+        <button id="18" onclick="ragebaitPre()" class="eightten">18</button>
+        <button id="19" onclick="ragebaitPre()" class="nineten">19</button>
+        <button id="20" onclick="ragebaitPre()" class="twenty">20</button>
+    </div>
+    <img src="" id="idiotic" style="z-index: 100">
+    <div id="question1">
+        <img src="" id="question1Show">
+        <p id="question1Instruction"></p>
+        <form action="">
+            <input type="radio" name="Q1" id="answer">
+            <label id="Q1Answer" for="answer"></label><br>
+            <input type="radio" name="Q1" id="1wrong1">
+            <label id="Q1Wrong1" for="1wrong1"></label><br>
+            <input type="radio" name="Q1" id="1wrong2">
+            <label id="Q1Wrong2" for="1wrong2"></label><br>
+            <input type="radio" name="Q1" id="1wrong3">
+            <label id="Q1Wrong3" for="1wrong3"></label><br>
+        </form>
+        <input type="button" value="sUbMiT" onclick="question1()">
+    </div>
+    <script src="javascript/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<style>
+    body{
+        font-size: 20px;
+        font-family: sans-serif;
+        color: #333;
+    }
+    .center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Adjust as needed */
+    }
+    .question{
+            font-weight: 600;
+    }
+    .answers {
+        margin-bottom: 20px;
+    }
+    #submit{
+            font-family: sans-serif;
+            font-size: 20px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+    }
+    #submit:hover{
+            background-color: #3a8;
+    }
+</style>
+<body>
+    <div class="center">
+        <div id="quiz"></div>
+        <button id="submit">See how you did</button>
+        <div id="results"></div>
+    </div>
+<script>
+    var quizContainer = document.getElementById("quiz");
+    var resultsContainer = document.getElementById("results");
+    var submitButton = document.getElementById("submit");
+    var questions = [ //this creates an array of questions that is set as the variable
+        {
+            question: "Who is the current prime minister of Fish City?",
+            answers: {
+                a: 'Angus Bagpipes',
+                b: 'Barboley Attrachtut',
+                c: 'Yuvraj Thakkar',
+                d: 'Axel Landjarges'
+            },
+            correctAnswer: 'a'
+        },
+        {
+            question: "Who was the first emperor of the Fishish Empire after it gained independence from the Angorian Empire?",
+            answers: {
+                a: 'Stuarlen VII',
+                b: 'Aurgristal I',
+                c: 'Aurgius I',
+                d: 'Vihaan Duddupuddi'
+            },
+            correctAnswer: 'c'
+        },
+        {
+            question: "What is the most populous city of Fish City?",
+            answers: {
+                a: 'Komodo City',
+                b: 'Sheperton',
+                c: 'New York',
+                d: 'Volorvintu'
+            },
+            correctAnswer: 'b'
+        },
+        {
+            question: "What is Fish City's busiest border crossing?",
+            answers: {
+                a: 'Lake Washington Border Crossing (Fishlantic City)',
+                b: 'Gereben Port of Entry (Fish Island)',
+                c: 'Luzarto Port of Entry (Hallowed Reef)',
+                d: 'Ostabohn Port of Entry (Dorekan Republic)'
+            },
+            correctAnswer: 'd'
+        }
+    ]
+    function quizMaker(questions, quizContainer, resultsContainer, submitButton) {
+        function showQuestions(questions, quizContainer) {
+            var userAnswer = [];
+            var answers;
+            for (var i=0;i<questions.length; i++){ //uses a for loop to run the questions
+                answers = []; //clearing what user answered after every question
+                for (letter in questions[i].answers) { //uses a for loop to set up the radio buttons for the questions
+                    answers.push('<label>' + '<input type="radio" name="question'+i+'" value="'+letter+'">' + letter + ': ' + questions[i].answers[letter] + '</label>');
+                    //above line adds a radio button with javascript, hence the html-esque syntax.
+                    //next line pushes what was answered to the userAnswer array
+                }
+                userAnswer.push(
+                        '<div class="question">' + questions[i].question + '</div>'
+                        + '<div class="answers">' + answers.join('') + '</div>'
+                );
+            }
+            //combining the userAnswer list into a string and displaying it
+            quizContainer.innerHTML = userAnswer.join('');
+        }
+        function showResults(questions, quizContainer, resultsContainer) {
+            //filling answer containers
+            var answerContainers = quizContainer.querySelectorAll('.answers');
+            //keeping track of correctness of user's answers
+            var answersOfUser = '';
+            var numCorrect = 0;
+            //grading the questions by finding answers and checking validity
+            for (var i=0; i<questions.length; i++){
+                answersOfUser = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+                if(answersOfUser===questions[i].correctAnswer){
+                    numCorrect++;
+                    answerContainers[i].style.color = "green";
+                } else {
+                    answerContainers[i].style.color = "red";
+                }
+            }
+            resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length; //questions.lenght evaluates amount of questions done with for loop
+        }
+        showQuestions(questions, quizContainer);
+        submitButton.onclick = function(){
+            showResults(questions, quizContainer, resultsContainer)
+        }
+    }
+    quizMaker(questions, quizContainer, resultsContainer, submitButton);
+</script>
+</body>
+</html>
